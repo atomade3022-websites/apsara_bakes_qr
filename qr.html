@@ -230,7 +230,7 @@
   <!-- Printable Counter Standee -->
   <div class="standee-card">
     <div class="standee-logo-wrap">
-      <img src="optimized/header_logo.webp" alt="Apsara Bakes" class="standee-logo" />
+      <img src="header_logo.webp" alt="Apsara Bakes" class="standee-logo" />
     </div>
     <p class="shop-tagline">Cakes &amp; Authentic Bakery Items</p>
 
@@ -241,7 +241,7 @@
     <h2 class="instruction-title">Scan to View Menu</h2>
     <p class="instruction-desc">Point your phone camera at this QR code to view all Cakes &amp; Bakery items instantly.</p>
 
-    <span class="url-badge" id="urlBadge">http://192.168.18.27:8080</span>
+    <span class="url-badge" id="urlBadge">https://atomade3022-websites.github.io/apsara_bakes_qr/</span>
   </div>
 
   <!-- Action Controls -->
@@ -252,9 +252,9 @@
     </div>
 
     <div class="url-config-box">
-      <label for="customUrlInput">Target Website URL (Change if hosted online)</label>
+      <label for="customUrlInput">Target Website URL (Update anytime as needed)</label>
       <div class="url-input-group">
-        <input type="text" id="customUrlInput" class="url-input" value="http://192.168.18.27:8080" />
+        <input type="text" id="customUrlInput" class="url-input" value="https://atomade3022-websites.github.io/apsara_bakes_qr/" />
         <button class="url-update-btn" id="updateUrlBtn">Update</button>
       </div>
     </div>
@@ -267,10 +267,8 @@
     const urlBadge = document.getElementById('urlBadge');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // Default to current host if opened in browser or local IP
-    let initialUrl = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
-      ? 'http://192.168.18.27:8080'
-      : window.location.origin;
+    // Default target website URL
+    let initialUrl = 'https://atomade3022-websites.github.io/apsara_bakes_qr/';
 
     if (window.location.protocol === 'file:') {
       initialUrl = 'http://192.168.18.27:8080';
