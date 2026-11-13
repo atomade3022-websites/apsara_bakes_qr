@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apsara Bakes - Permanent Shop QR Code</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <style>
+    :root {
+      --bg-main: #f8f9fa;
+      --bg-surface: #ffffff;
+      --border: #e5e7eb;
+      --border-dark: #d1d5db;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .standee-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 30px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .standee-logo-wrap {
+      margin: 0 auto 10px;
+      max-width: 200px;
+    }
+
+    .standee-logo {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .shop-header {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .shop-tagline {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .qr-frame {
+      display: inline-block;
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 20px;
+    }
+
+    .qr-frame canvas, .qr-frame img {
+      display: block;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto;
+    }
+
+    .instruction-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .instruction-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 18px;
+    }
+
+    .url-badge {
+      display: inline-block;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-family: monospace;
+      padding: 6px 14px;
+      border-radius: 20px;
+      word-break: break-all;
+    }
+
+    /* Actions */
+    .controls {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #111827;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-main);
+    }
+
+    .url-config-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 8px;
+      text-align: left;
+    }
+
+    .url-config-box label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .url-input-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .url-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .url-update-btn {
+      padding: 8px 14px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .controls {
+        display: none !important;
+      }
+      .standee-card {
+        border: 2px solid #000000;
+        box-shadow: none;
+        margin: 0 auto;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Printable Counter Standee -->
+  <div class="standee-card">
+    <div class="standee-logo-wrap">
+      <img src="header_logo.webp" alt="Apsara Bakes" class="standee-logo" />
+    </div>
+    <p class="shop-tagline">Cakes &amp; Authentic Bakery Items</p>
+
+    <div class="qr-frame">
+      <canvas id="qrCanvas"></canvas>
+    </div>
+
+    <h2 class="instruction-title">Scan to View Menu</h2>
+    <p class="instruction-desc">Point your phone camera at this QR code to view all Cakes &amp; Bakery items instantly.</p>
+
+    <span class="url-badge" id="urlBadge">http://192.168.18.27:8080</span>
+  </div>
+
+  <!-- Action Controls -->
+  <div class="controls">
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="window.print()">Print Counter Standee</button>
+      <a class="btn btn-secondary" id="downloadBtn" download="apsara-bakes-qr.png" href="qr-code.png">Download PNG</a>
+    </div>
+
+    <div class="url-config-box">
+      <label for="customUrlInput">Target Website URL (Change if hosted online)</label>
+      <div class="url-input-group">
+        <input type="text" id="customUrlInput" class="url-input" value="http://192.168.18.27:8080" />
+        <button class="url-update-btn" id="updateUrlBtn">Update</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('qrCanvas');
+    const urlInput = document.getElementById('customUrlInput');
+    const updateBtn = document.getElementById('updateUrlBtn');
+    const urlBadge = document.getElementById('urlBadge');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    // Default to current host if opened in browser or local IP
+    let initialUrl = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
+      ? 'http://192.168.18.27:8080'
+      : window.location.origin;
+
+    if (window.location.protocol === 'file:') {
+      initialUrl = 'http://192.168.18.27:8080';
+    }
+
+    urlInput.value = initialUrl;
+    renderQr(initialUrl);
+
+    function renderQr(url) {
+      urlBadge.textContent = url;
+      if (window.QRCode) {
+        QRCode.toCanvas(canvas, url, {
+          width: 220,
+          margin: 1,
+          color: {
+            dark: '#111827',
+            light: '#ffffff'
+          },
+          errorCorrectionLevel: 'H'
+        }, function (error) {
+          if (!error) {
+            downloadBtn.href = canvas.toDataURL('image/png');
+          }
+        });
+      }
+    }
+
+    updateBtn.addEventListener('click', () => {
+      const val = urlInput.value.trim();
+      if (val) {
+        renderQr(val);
+      }
+    });
+  </script>
+</body>
+</html>
