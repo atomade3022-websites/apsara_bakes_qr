@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Apsara Bakes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- WISH POPUP (Auto-closes after 4 seconds) -->
+  <div id="welcomePopup" class="popup-overlay" role="dialog" aria-modal="true" aria-label="Apsara Bakes">
+    <div class="popup-card celebration-card">
+      <button id="closePopupBtn" class="popup-close-btn" aria-label="Close message">&times;</button>
+      
+      <div class="popup-logo-wrap">
+        <img src="header_logo.webp" alt="Apsara Bakes" class="popup-logo" width="220" height="90" />
+      </div>
+
+      <p class="celebration-wish-text">
+        Thank you for choosing Apsara Bakes.<br />Have a sweet day!
+      </p>
+
+      <div class="popup-timer-wrap">
+        <div class="popup-progress-track">
+          <div id="popupProgressBar" class="popup-progress-bar"></div>
+        </div>
+        <span id="popupCountdown" class="popup-countdown">Closing in 4s...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER SECTION WITH PROMINENT LOGO -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-logo-container">
+        <img src="header_logo.webp" alt="Apsara Bakes" class="header-logo" width="260" height="90" />
+      </div>
+    </div>
+
+    <!-- TABS / PAGE SWITCHER -->
+    <nav class="page-nav" aria-label="Menu categories">
+      <button class="nav-tab active" id="tabCakes" data-page="0">
+        <span class="tab-label">Cakes</span>
+        <span class="tab-count">47</span>
+      </button>
+      <button class="nav-tab" id="tabBakery" data-page="1">
+        <span class="tab-label">Bakery Items</span>
+        <span class="tab-count">47</span>
+      </button>
+      <div class="nav-indicator" id="navIndicator"></div>
+    </nav>
+  </header>
+
+  <!-- SWIPE HINT / INDICATOR -->
+  <div class="swipe-hint" id="swipeHint">
+    <span class="swipe-hint-icon">&larr;</span>
+    <span class="swipe-hint-text">Swipe screen to switch category</span>
+    <span class="swipe-hint-icon">&rarr;</span>
+  </div>
+
+  <!-- MAIN SWIPE VIEWPORT -->
+  <main class="swipe-viewport" id="swipeViewport">
+    <div class="swipe-container" id="swipeContainer">
+      
+      <!-- PAGE 1: CAKES (47 CAKES) -->
+      <section class="menu-page" id="pageCakes" aria-label="Cakes">
+        <div class="items-grid">
+          <article class="item-card" data-name="Berry Chocolate Cake" data-full="BERRY%20CHOCOLATE_full.webp">
+            <div class="item-img-box">
+              <img src="BERRY%20CHOCOLATE.webp" alt="Berry Chocolate Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Berry Chocolate Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Blueberry Cake" data-full="BLUEBERRY_full.webp">
+            <div class="item-img-box">
+              <img src="BLUEBERRY.webp" alt="Blueberry Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Blueberry Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Boost Nap Cake" data-full="BOOST%20NAP_full.webp">
+            <div class="item-img-box">
+              <img src="BOOST%20NAP.webp" alt="Boost Nap Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Boost Nap Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Butterscotch Delight" data-full="BUTTERSCOTCH_full.webp">
+            <div class="item-img-box">
+              <img src="BUTTERSCOTCH.webp" alt="Butterscotch Delight" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Butterscotch Delight</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Caramel Crunch" data-full="CARAMEL_full.webp">
+            <div class="item-img-box">
+              <img src="CARAMEL.webp" alt="Caramel Crunch" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Caramel Crunch</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Choco Crunch Cake" data-full="CHOCO%20CRUNCH_full.webp">
+            <div class="item-img-box">
+              <img src="CHOCO%20CRUNCH.webp" alt="Choco Crunch Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Choco Crunch Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Choco Truffle Cake" data-full="CHOCO%20TRUFFLE_full.webp">
+            <div class="item-img-box">
+              <img src="CHOCO%20TRUFFLE.webp" alt="Choco Truffle Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Choco Truffle Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Choco Vanilla Cake" data-full="CHOCO%20VANILLA_full.webp">
+            <div class="item-img-box">
+              <img src="CHOCO%20VANILLA.webp" alt="Choco Vanilla Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Choco Vanilla Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Choco Velvet Cake" data-full="CHOCO%20VELVET_full.webp">
+            <div class="item-img-box">
+              <img src="CHOCO%20VELVET.webp" alt="Choco Velvet Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Choco Velvet Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Cocktail Fruit Cake" data-full="COCKTAIL_full.webp">
+            <div class="item-img-box">
+              <img src="COCKTAIL.webp" alt="Cocktail Fruit Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Cocktail Fruit Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Coffee Fresh Cake" data-full="COFFEE%20FRESH_full.webp">
+            <div class="item-img-box">
+              <img src="COFFEE%20FRESH.webp" alt="Coffee Fresh Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Coffee Fresh Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Coffee Peanut Cake" data-full="COFFEE%20PEANUT_full.webp">
+            <div class="item-img-box">
+              <img src="COFFEE%20PEANUT.webp" alt="Coffee Peanut Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Coffee Peanut Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Crunchy KitKat Cake" data-full="CRUNCHY%20KITKAT_full.webp">
+            <div class="item-img-box">
+              <img src="CRUNCHY%20KITKAT.webp" alt="Crunchy KitKat Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Crunchy KitKat Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Dates Rich Cake" data-full="DATES%20RICH_full.webp">
+            <div class="item-img-box">
+              <img src="DATES%20RICH.webp" alt="Dates Rich Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Dates Rich Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Dutch Fantasy Cake" data-full="DUTCH%20FANTACY_full.webp">
+            <div class="item-img-box">
+              <img src="DUTCH%20FANTACY.webp" alt="Dutch Fantasy Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Dutch Fantasy Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Ferrero Choco Cake" data-full="FERRARO%20CHOCO_full.webp">
+            <div class="item-img-box">
+              <img src="FERRARO%20CHOCO.webp" alt="Ferrero Choco Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Ferrero Choco Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Fudge Nut Cake" data-full="FUDGE%20NUT_full.webp">
+            <div class="item-img-box">
+              <img src="FUDGE%20NUT.webp" alt="Fudge Nut Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Fudge Nut Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Gemscort Cake" data-full="GEMSCORT_full.webp">
+            <div class="item-img-box">
+              <img src="GEMSCORT.webp" alt="Gemscort Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Gemscort Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="German Chocolate Cake" data-full="GERMAN%20CHOCOLATE_full.webp">
+            <div class="item-img-box">
+              <img src="GERMAN%20CHOCOLATE.webp" alt="German Chocolate Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">German Chocolate Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Honey Almond Cake" data-full="HONEY%20ALMOND_full.webp">
+            <div class="item-img-box">
+              <img src="HONEY%20ALMOND.webp" alt="Honey Almond Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Honey Almond Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Honey Nut Cake" data-full="HONEY%20HUT_full.webp">
+            <div class="item-img-box">
+              <img src="HONEY%20HUT.webp" alt="Honey Nut Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Honey Nut Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Horlicks Vanilla Cake" data-full="HORLICKS%20VANILLA_full.webp">
+            <div class="item-img-box">
+              <img src="HORLICKS%20VANILLA.webp" alt="Horlicks Vanilla Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Horlicks Vanilla Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Kifaya Cake" data-full="KIFAYA%20CAKE_full.webp">
+            <div class="item-img-box">
+              <img src="KIFAYA%20CAKE.webp" alt="Kifaya Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Kifaya Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Kulfi Cake" data-full="KULFI%20CAKE_full.webp">
+            <div class="item-img-box">
+              <img src="KULFI%20CAKE.webp" alt="Kulfi Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Kulfi Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Lotus Biscoff Cake" data-full="LOTUS_full.webp">
+            <div class="item-img-box">
+              <img src="LOTUS.webp" alt="Lotus Biscoff Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Lotus Biscoff Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Mango Magic Cake" data-full="MANGO%20MAGIC_full.webp">
+            <div class="item-img-box">
+              <img src="MANGO%20MAGIC.webp" alt="Mango Magic Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Mango Magic Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Merryberry Cake" data-full="MERRYBERRY_full.webp">
+            <div class="item-img-box">
+              <img src="MERRYBERRY.webp" alt="Merryberry Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Merryberry Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Milk Chocolate Cake" data-full="MILK%20CHOCOLATE_full.webp">
+            <div class="item-img-box">
+              <img src="MILK%20CHOCOLATE.webp" alt="Milk Chocolate Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Milk Chocolate Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Milk Fantasy Cake" data-full="MILK%20FANTACY_full.webp">
+            <div class="item-img-box">
+              <img src="MILK%20FANTACY.webp" alt="Milk Fantasy Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Milk Fantasy Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Mingle Cake" data-full="MINGLE%20CAKE_full.webp">
+            <div class="item-img-box">
+              <img src="MINGLE%20CAKE.webp" alt="Mingle Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Mingle Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Munch Bite Cake" data-full="MUNCH%20BITE_full.webp">
+            <div class="item-img-box">
+              <img src="MUNCH%20BITE.webp" alt="Munch Bite Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Munch Bite Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Nestle Vanilla Cake" data-full="NESTILE%20VANILLA_full.webp">
+            <div class="item-img-box">
+              <img src="NESTILE%20VANILLA.webp" alt="Nestle Vanilla Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Nestle Vanilla Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Nut Chocolate Cake" data-full="NUT%20CHOCOLATE_full.webp">
+            <div class="item-img-box">
+              <img src="NUT%20CHOCOLATE.webp" alt="Nut Chocolate Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Nut Chocolate Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Nutella Cake" data-full="NUTELLA%20CAKE_full.webp">
+            <div class="item-img-box">
+              <img src="NUTELLA%20CAKE.webp" alt="Nutella Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Nutella Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Nutty Bubble Cake" data-full="NUTTY%20BUBBLE_full.webp">
+            <div class="item-img-box">
+              <img src="NUTTY%20BUBBLE.webp" alt="Nutty Bubble Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Nutty Bubble Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Oreo Flake Cake" data-full="ORED%20FLAKE_full.webp">
+            <div class="item-img-box">
+              <img src="ORED%20FLAKE.webp" alt="Oreo Flake Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Oreo Flake Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Pineapple Cotex Cake" data-full="pineapple%20cotex_full.webp">
+            <div class="item-img-box">
+              <img src="pineapple%20cotex.webp" alt="Pineapple Cotex Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Pineapple Cotex Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Premium Choco Chip Cake" data-full="premium%20choco%20chip_full.webp">
+            <div class="item-img-box">
+              <img src="premium%20choco%20chip.webp" alt="Premium Choco Chip Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Premium Choco Chip Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Premium White Chip Cake" data-full="PREMIUM%20WHITE%20CHIP_full.webp">
+            <div class="item-img-box">
+              <img src="PREMIUM%20WHITE%20CHIP.webp" alt="Premium White Chip Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Premium White Chip Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Praline Cake" data-full="PROLINE_full.webp">
+            <div class="item-img-box">
+              <img src="PROLINE.webp" alt="Praline Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Praline Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Red Bee Cake" data-full="RED%20BEE_full.webp">
+            <div class="item-img-box">
+              <img src="RED%20BEE.webp" alt="Red Bee Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Red Bee Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Red Vancho Cake" data-full="RED%20VANCHO_full.webp">
+            <div class="item-img-box">
+              <img src="RED%20VANCHO.webp" alt="Red Vancho Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Red Vancho Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Red Velvet Cake" data-full="RED%20VELVET_full.webp">
+            <div class="item-img-box">
+              <img src="RED%20VELVET.webp" alt="Red Velvet Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Red Velvet Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Snickers Drip Cake" data-full="SNICKERS%20DRIP_full.webp">
+            <div class="item-img-box">
+              <img src="SNICKERS%20DRIP.webp" alt="Snickers Drip Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Snickers Drip Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Spanish Delight Cake" data-full="SPANISH%20DELIGHT_full.webp">
+            <div class="item-img-box">
+              <img src="SPANISH%20DELIGHT.webp" alt="Spanish Delight Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Spanish Delight Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Strawberry Cake" data-full="STRAWBERRY_full.webp">
+            <div class="item-img-box">
+              <img src="STRAWBERRY.webp" alt="Strawberry Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Strawberry Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Vancho Cake" data-full="VANCHO_full.webp">
+            <div class="item-img-box">
+              <img src="VANCHO.webp" alt="Vancho Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Vancho Cake</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PAGE 2: FULL BAKERY ITEMS (47 ITEMS) -->
+      <section class="menu-page" id="pageBakery" aria-label="Full Bakery Items">
+        <div class="items-grid">
+          <article class="item-card" data-name="Banana Chips (Coconut Oil)" data-full="BANANA%20CHIPS-COCONUT%20OIL_full.webp">
+            <div class="item-img-box">
+              <img src="BANANA%20CHIPS-COCONUT%20OIL.webp" alt="Banana Chips (Coconut Oil)" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Banana Chips (Coconut Oil)</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Banana Chips (Vegetable Oil)" data-full="BANANA%20CHIPS-VEGITABLE%20OIL_full.webp">
+            <div class="item-img-box">
+              <img src="BANANA%20CHIPS-VEGITABLE%20OIL.webp" alt="Banana Chips (Vegetable Oil)" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Banana Chips (Vegetable Oil)</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Sharkkara Upperi" data-full="SHARKKARA%20UPPERI_full.webp">
+            <div class="item-img-box">
+              <img src="SHARKKARA%20UPPERI.webp" alt="Sharkkara Upperi" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Sharkkara Upperi</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Tapioca Chips Masala" data-full="TAPIOCA%20CHIPS%20MASALA_full.webp">
+            <div class="item-img-box">
+              <img src="TAPIOCA%20CHIPS%20MASALA.webp" alt="Tapioca Chips Masala" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Tapioca Chips Masala</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Tapioca Chips (Coconut Oil)" data-full="TAPIOCA%20CHIPS-COCONUT%20OIL_full.webp">
+            <div class="item-img-box">
+              <img src="TAPIOCA%20CHIPS-COCONUT%20OIL.webp" alt="Tapioca Chips (Coconut Oil)" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Tapioca Chips (Coconut Oil)</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Tapioca Chips (Vegetable Oil)" data-full="TAPIOCA%20CHIPS%20-VEGITABLE%20OIL_full.webp">
+            <div class="item-img-box">
+              <img src="TAPIOCA%20CHIPS%20-VEGITABLE%20OIL.webp" alt="Tapioca Chips (Vegetable Oil)" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Tapioca Chips (Vegetable Oil)</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Tapioca Stick Masala" data-full="TAPIOCA%20STICK%20MASALA_full.webp">
+            <div class="item-img-box">
+              <img src="TAPIOCA%20STICK%20MASALA.webp" alt="Tapioca Stick Masala" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Tapioca Stick Masala</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Jackfruit Chips" data-full="JACKFRUIT%20CHIPS_full.webp">
+            <div class="item-img-box">
+              <img src="JACKFRUIT%20CHIPS.webp" alt="Jackfruit Chips" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Jackfruit Chips</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Apsara Special Mixture" data-full="SPECIAL%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="SPECIAL%20MIXTURE.webp" alt="Apsara Special Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Apsara Special Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Kerala Hot Mixture" data-full="KEALA%20HOT%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="KEALA%20HOT%20MIXTURE.webp" alt="Kerala Hot Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Kerala Hot Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Payyoli Mixture" data-full="PAYYOLI%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="PAYYOLI%20MIXTURE.webp" alt="Payyoli Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Payyoli Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Red Special Mixture" data-full="RED%20SP%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="RED%20SP%20MIXTURE.webp" alt="Red Special Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Red Special Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="South Mixture" data-full="SOUTH%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="SOUTH%20MIXTURE.webp" alt="South Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">South Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Katty Mixture" data-full="KATTY%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="KATTY%20MIXTURE.webp" alt="Katty Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Katty Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Dal Mixture" data-full="DAL%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="DAL%20MIXTURE.webp" alt="Dal Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Dal Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Omappodi" data-full="OMAPPODI_full.webp">
+            <div class="item-img-box">
+              <img src="OMAPPODI.webp" alt="Omappodi" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Omappodi</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Corn Mixture" data-full="CORN%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="CORN%20MIXTURE.webp" alt="Corn Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Corn Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Sweet Corn Mixture" data-full="SWEET%20CORN%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="SWEET%20CORN%20MIXTURE.webp" alt="Sweet Corn Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Sweet Corn Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Sweet Mixture" data-full="SWEET%20MIXTURE_full.webp">
+            <div class="item-img-box">
+              <img src="SWEET%20MIXTURE.webp" alt="Sweet Mixture" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Sweet Mixture</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Rice Murukku" data-full="RICE%20MURUKKU_full.webp">
+            <div class="item-img-box">
+              <img src="RICE%20MURUKKU.webp" alt="Rice Murukku" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Rice Murukku</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Rice Murukku Masala" data-full="RICE%20MURUKKU%20MASALA_full.webp">
+            <div class="item-img-box">
+              <img src="RICE%20MURUKKU%20MASALA.webp" alt="Rice Murukku Masala" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Rice Murukku Masala</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Ring Murukku" data-full="RING%20MURUKKU_full.webp">
+            <div class="item-img-box">
+              <img src="RING%20MURUKKU.webp" alt="Ring Murukku" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Ring Murukku</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Poloring" data-full="POLORING_full.webp">
+            <div class="item-img-box">
+              <img src="POLORING.webp" alt="Poloring" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Poloring</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Pettiyappam" data-full="PETTIYAPPAM_full.webp">
+            <div class="item-img-box">
+              <img src="PETTIYAPPAM.webp" alt="Pettiyappam" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Pettiyappam</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Madhura Pettiyappam" data-full="MADHURA%20PETTIYAPPAM_full.webp">
+            <div class="item-img-box">
+              <img src="MADHURA%20PETTIYAPPAM.webp" alt="Madhura Pettiyappam" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Madhura Pettiyappam</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Masala Pettiyappam" data-full="MASALA%20PETTIYAPPAM_full.webp">
+            <div class="item-img-box">
+              <img src="MASALA%20PETTIYAPPAM.webp" alt="Masala Pettiyappam" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Masala Pettiyappam</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Kuzhalappam" data-full="KUZHALAPPAM_full.webp">
+            <div class="item-img-box">
+              <img src="KUZHALAPPAM.webp" alt="Kuzhalappam" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Kuzhalappam</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Sweet Kaja" data-full="SWEET%20KAJA_full.webp">
+            <div class="item-img-box">
+              <img src="SWEET%20KAJA.webp" alt="Sweet Kaja" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Sweet Kaja</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Masala Kaja" data-full="MASALA%20KAJA_full.webp">
+            <div class="item-img-box">
+              <img src="MASALA%20KAJA.webp" alt="Masala Kaja" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Masala Kaja</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Madhura Seva" data-full="MADHURASEVA_full.webp">
+            <div class="item-img-box">
+              <img src="MADHURASEVA.webp" alt="Madhura Seva" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Madhura Seva</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Masala Seva" data-full="MASALA%20SEVA_full.webp">
+            <div class="item-img-box">
+              <img src="MASALA%20SEVA.webp" alt="Masala Seva" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Masala Seva</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Chukkappam" data-full="CHUKKAPPAM_full.webp">
+            <div class="item-img-box">
+              <img src="CHUKKAPPAM.webp" alt="Chukkappam" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Chukkappam</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Ribbon Pakoda" data-full="RIBBON%20PAKODA_full.webp">
+            <div class="item-img-box">
+              <img src="RIBBON%20PAKODA.webp" alt="Ribbon Pakoda" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Ribbon Pakoda</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Lottas" data-full="LOTTAS_full.webp">
+            <div class="item-img-box">
+              <img src="LOTTAS.webp" alt="Lottas" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Lottas</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Laddumani" data-full="LADDUMANI_full.webp">
+            <div class="item-img-box">
+              <img src="LADDUMANI.webp" alt="Laddumani" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Laddumani</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Masala Kadala" data-full="MASALA%20KADALA_full.webp">
+            <div class="item-img-box">
+              <img src="MASALA%20KADALA.webp" alt="Masala Kadala" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Masala Kadala</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Kabool Kadala" data-full="KABOOL%20KADALA_full.webp">
+            <div class="item-img-box">
+              <img src="KABOOL%20KADALA.webp" alt="Kabool Kadala" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Kabool Kadala</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Pottu Kadala" data-full="POTTU%20KADALA_full.webp">
+            <div class="item-img-box">
+              <img src="POTTU%20KADALA.webp" alt="Pottu Kadala" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Pottu Kadala</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Aval Roast" data-full="AVAL%20ROAST_full.webp">
+            <div class="item-img-box">
+              <img src="AVAL%20ROAST.webp" alt="Aval Roast" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Aval Roast</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Beams Biscuits" data-full="BEAMS%20BISCUITS_full.webp">
+            <div class="item-img-box">
+              <img src="BEAMS%20BISCUITS.webp" alt="Beams Biscuits" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Beams Biscuits</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Biscuits" data-full="BISUITS_full.webp">
+            <div class="item-img-box">
+              <img src="BISUITS.webp" alt="Biscuits" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Biscuits</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Sarved Biscuit" data-full="SARVED%20BISCUIT_full.webp">
+            <div class="item-img-box">
+              <img src="SARVED%20BISCUIT.webp" alt="Sarved Biscuit" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Sarved Biscuit</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Varkey" data-full="VARKEY_full.webp">
+            <div class="item-img-box">
+              <img src="VARKEY.webp" alt="Varkey" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Varkey</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Pala Biscuit" data-full="PALA%20BISCUIT_full.webp">
+            <div class="item-img-box">
+              <img src="PALA%20BISCUIT.webp" alt="Pala Biscuit" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Pala Biscuit</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Fruit Rusk" data-full="FRUIT%20RUSK_full.webp">
+            <div class="item-img-box">
+              <img src="FRUIT%20RUSK.webp" alt="Fruit Rusk" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Fruit Rusk</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Ghee Rusk" data-full="GHEE%20RUSK_full.webp">
+            <div class="item-img-box">
+              <img src="GHEE%20RUSK.webp" alt="Ghee Rusk" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Ghee Rusk</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Rusk" data-full="RUSK_full.webp">
+            <div class="item-img-box">
+              <img src="RUSK.webp" alt="Rusk" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Rusk</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FULLSCREEN IMAGE VIEWER MODAL -->
+  <div id="imageViewerModal" class="image-viewer-modal" role="dialog" aria-modal="true" aria-label="Product Image View" style="display: none;">
+    <div class="viewer-backdrop" id="viewerBackdrop"></div>
+    <div class="viewer-content">
+      <button id="closeViewerBtn" class="viewer-close-btn" aria-label="Close fullscreen view">&times;</button>
+      <div class="viewer-image-box">
+        <img id="viewerImage" src="" alt="" class="viewer-img" />
+      </div>
+      <div class="viewer-caption">
+        <h3 id="viewerTitle" class="viewer-title"></h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM SWIPE DOTS -->
+  <footer class="app-footer">
+    <div class="dots-indicator">
+      <span class="dot active" id="dot0" data-page="0" aria-label="Page 1: Cakes"></span>
+      <span class="dot" id="dot1" data-page="1" aria-label="Page 2: Bakery Items"></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
