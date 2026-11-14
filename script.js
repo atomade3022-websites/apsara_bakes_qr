@@ -357,6 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (shareCopyBtn) shareCopyBtn.classList.remove("copied");
 
     // Display modal with white background
+    hideSlideGuide();
     viewerModal.style.display = "flex";
     document.body.style.overflow = "hidden";
     requestAnimationFrame(() => {
@@ -371,6 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       viewerModal.style.display = "none";
       viewerImage.src = "";
+      if (!allSectionsVisited) showSlideGuide();
     }, 260);
   }
 
@@ -474,6 +476,112 @@ document.addEventListener("DOMContentLoaded", () => {
   const dot2 = document.getElementById("dot2");
   const swipeViewport = document.getElementById("swipeViewport");
 
+  // Slide to next section animated indicator
+  const slideGuideHint = document.getElementById("slideGuideHint");
+  const slideGuideText = document.getElementById("slideGuideText");
+  const swipeHint = document.getElementById("swipeHint");
+
+  const visitedSections = new Set([0]); // Starts on section 0 (Cakes)
+  let allSectionsVisited = false;
+  let scrollStopTimer = null;
+
+  function updateSlideGuideText(pageIndex) {
+    if (allSectionsVisited || !slideGuideHint) return;
+    const arrowIcon = slideGuideHint.querySelector(".slide-guide-arrow-icon");
+
+    if (pageIndex === 0) {
+      if (slideGuideText) slideGuideText.textContent = "Slide for Bakery Items";
+      if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
+    } else if (pageIndex === 1) {
+      if (slideGuideText) slideGuideText.textContent = "Slide for Customized Cakes";
+      if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
+    } else if (pageIndex === 2) {
+      if (!visitedSections.has(1)) {
+        if (slideGuideText) slideGuideText.textContent = "Slide for Bakery Items";
+        if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
+      } else if (!visitedSections.has(0)) {
+        if (slideGuideText) slideGuideText.textContent = "Slide for Cakes";
+        if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
+      }
+    }
+  }
+
+  function hideSlideGuide() {
+    if (!slideGuideHint || allSectionsVisited) return;
+    slideGuideHint.classList.add("hidden");
+    slideGuideHint.classList.remove("popping-up");
+  }
+
+  function showSlideGuide() {
+    if (!slideGuideHint || allSectionsVisited) return;
+    if (visitedSections.size >= 3) {
+      stopSlideGuidePermanently();
+      return;
+    }
+    slideGuideHint.classList.remove("hidden");
+    slideGuideHint.classList.remove("popping-up");
+    void slideGuideHint.offsetWidth; // Force reflow to replay pop-up animation
+    slideGuideHint.classList.add("popping-up");
+  }
+
+  function stopSlideGuidePermanently() {
+    allSectionsVisited = true;
+    if (slideGuideHint) {
+      slideGuideHint.classList.add("hidden", "stopped");
+      slideGuideHint.style.display = "none";
+    }
+    if (swipeHint) {
+      swipeHint.style.display = "none";
+    }
+  }
+
+  function handleSectionChange(newPageIndex) {
+    visitedSections.add(newPageIndex);
+
+    // If all 3 sections (0, 1, 2) have been visited, permanently stop animation
+    if (visitedSections.has(0) && visitedSections.has(1) && visitedSections.has(2)) {
+      stopSlideGuidePermanently();
+      return;
+    }
+
+    updateSlideGuideText(newPageIndex);
+    showSlideGuide();
+  }
+
+  if (slideGuideHint) {
+    slideGuideHint.addEventListener("click", () => {
+      if (currentPage < totalPages - 1) {
+        goToPage(currentPage + 1);
+      } else if (currentPage === 2) {
+        if (!visitedSections.has(1)) goToPage(1);
+        else if (!visitedSections.has(0)) goToPage(0);
+      }
+    });
+  }
+
+  // Scroll detection: while user scrolls down, animation stops; when user stops scrolling, pops up again
+  function onScrollHandler() {
+    if (allSectionsVisited) return;
+
+    // Scrolling down/up: stop animation and hide
+    hideSlideGuide();
+
+    // When scrolling stops, pop up again
+    clearTimeout(scrollStopTimer);
+    scrollStopTimer = setTimeout(() => {
+      if (!allSectionsVisited) {
+        showSlideGuide();
+      }
+    }, 280);
+  }
+
+  const menuPages = document.querySelectorAll(".menu-page");
+  menuPages.forEach(p => {
+    p.addEventListener("scroll", onScrollHandler, { passive: true });
+  });
+  window.addEventListener("scroll", onScrollHandler, { passive: true });
+  document.addEventListener("scroll", onScrollHandler, { passive: true });
+
   let currentPage = 0; // 0 = Cakes, 1 = Bakery Items, 2 = Customized Cakes
   const totalPages = 3;
 
@@ -499,6 +607,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (idx === currentPage) dot.classList.add("active");
       else dot.classList.remove("active");
     });
+
+    handleSectionChange(currentPage);
   }
 
   if (tabCakes) tabCakes.addEventListener("click", () => goToPage(0));

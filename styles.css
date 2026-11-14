@@ -316,6 +316,117 @@ body {
 }
 
 /* ==========================================================================
+   ANIMATED SLIDE TO NEXT SECTION HINT
+   ========================================================================== */
+.slide-guide-hint {
+  position: fixed;
+  bottom: 58px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.24s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slide-guide-hint.popping-up {
+  animation: hintPopUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide-guide-hint.hidden {
+  opacity: 0;
+  transform: translate(-50%, 14px) scale(0.92);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.slide-guide-hint.hidden .slide-guide-arrow-icon {
+  animation-play-state: paused;
+}
+
+.slide-guide-hint.stopped {
+  display: none !important;
+}
+
+.slide-guide-content {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(17, 24, 39, 0.92);
+  color: #ffffff;
+  padding: 8px 14px 8px 16px;
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 2px 6px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.slide-guide-hint:hover .slide-guide-content {
+  background: rgba(17, 24, 39, 0.98);
+  transform: scale(1.03);
+}
+
+.slide-guide-hint:active .slide-guide-content {
+  transform: scale(0.96);
+}
+
+.slide-guide-text {
+  white-space: nowrap;
+}
+
+.slide-guide-arrow-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-dark, #b91c1c);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.slide-guide-arrow-icon {
+  animation: slideArrowAnim 1.2s infinite ease-in-out;
+}
+
+@keyframes slideArrowAnim {
+  0%, 100% {
+    transform: translateX(-2.5px);
+  }
+  50% {
+    transform: translateX(3.5px);
+  }
+}
+
+@keyframes hintPopUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 18px) scale(0.88);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -3px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* ==========================================================================
    SWIPE VIEWPORT & CONTAINERS
    ========================================================================== */
 .swipe-viewport {
