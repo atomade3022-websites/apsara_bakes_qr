@@ -9,190 +9,237 @@ document.addEventListener("DOMContentLoaded", () => {
   const cakeData = {
     "Berry Chocolate Cake": {
       menuName: "BERRY CHOCOLATE",
+      price: "₹1200/-",
       ingredients: "Black Red Cake, Truffle, Milkmaid, Praline, White Chip, Black Chip"
     },
     "Blueberry Cake": {
       menuName: "BLUEBERRY",
+      price: "₹900/-",
       ingredients: "White Cake, Blueberry Filling, Milkmaid, White Chip"
     },
     "Boost Nap Cake": {
       menuName: "BOOST NAP",
+      price: "₹1000/-",
       ingredients: "Black Cake, Boost, Black Chip"
     },
     "Butterscotch Delight": {
       menuName: "BUTTERSCOTCH",
+      price: "₹900/-",
       ingredients: "White Cake, White Chip, Praline, Caramel"
     },
     "Caramel Crunch": {
       menuName: "CARAMEL",
+      price: "₹900/-",
       ingredients: "White Cake, Nuts, White Chip, Praline, Caramel Gel"
     },
     "Choco Crunch Cake": {
       menuName: "CHOCO CRUNCH",
+      price: "₹1000/-",
       ingredients: "Black Cake, Boost, Horlicks, Choco Filling, Nuts, Black Chip, Praline, Truffle"
     },
     "Choco Truffle Cake": {
       menuName: "CHOCO TRUFFLE",
+      price: "₹900/-",
       ingredients: "Black Cake, Truffle, Black Chip, Nuts"
     },
     "Choco Vanilla Cake": {
       menuName: "CHOCO VANILLA",
+      price: "₹1000/-",
       ingredients: "White Black Cake, Black Cake, White Cake, Nuts, Truffle"
     },
     "Choco Velvet Cake": {
       menuName: "CHOCO VELVET",
+      price: "₹1000/-",
       ingredients: "Red Cake, Truffle, Nuts, Black Cake, Strawberry Crush"
     },
     "Cocktail Fruit Cake": {
       menuName: "COCKTAIL",
+      price: "₹1500/-",
       ingredients: "White Cake, Fresh Mixed Fruit"
     },
     "Coffee Fresh Cake": {
       menuName: "COFFEE FRESH",
+      price: "₹900/-",
       ingredients: "Black Cake, Truffle, Coffee Powder, Black Cake, Praline, Nuts"
     },
     "Coffee Peanut Cake": {
       menuName: "COFFEE PEANUT",
+      price: "₹1000/-",
       ingredients: "White Cake, Peanut, Coffee Powder, Truffle, Black Cake"
     },
     "Crunchy KitKat Cake": {
       menuName: "CRUNCHY KITKAT",
+      price: "₹1500/-",
       ingredients: "Black Cake, Nutella, KitKat, Nuts, Gems"
     },
     "Dates Rich Cake": {
       menuName: "DATES RICH",
+      price: "₹1000/-",
       ingredients: "White Cake, Dates, Praline, White Cake, Nuts, Dates Syrup"
     },
     "Dutch Fantasy Cake": {
       menuName: "DUTCH FANTACY",
+      price: "₹1000/-",
       ingredients: "Black Cake, Truffle, Dark Fantasy, Praline, Black Cake"
     },
     "Ferrero Choco Cake": {
       menuName: "FERRARO CHOCO",
+      price: "₹1500/-",
       ingredients: "Black Cake, Nutella, Ferrero Rocher, KitKat, Praline, Nuts"
     },
     "Fudge Nut Cake": {
       menuName: "FUDGE NUT",
+      price: "₹1000/-",
       ingredients: "White Cake, Caramel, Praline, Nuts, Black Cake, White Cake"
     },
     "Gemscort Cake": {
       menuName: "GEMSCORT",
+      price: "₹1200/-",
       ingredients: "Black White Cake, Gems, Truffle, Munch, Nuts, Black Cake, White Cake"
     },
     "German Chocolate Cake": {
       menuName: "GERMAN CHOCOLATE",
+      price: "₹1000/-",
       ingredients: "Black Cake, Almond, Praline, White Cake, Black Cake, Coconut Powder"
     },
     "Honey Almond Cake": {
       menuName: "HONEY ALMOND",
+      price: "₹1000/-",
       ingredients: "White Cake, Pure Honey, Almond, White Cake"
     },
     "Honey Nut Cake": {
       menuName: "HONEY NUT",
+      price: "₹1000/-",
       ingredients: "White Cake, Pure Honey, Nuts, White Cake"
     },
     "Horlicks Vanilla Cake": {
       menuName: "HORLICKS VANILLA",
+      price: "₹1000/-",
       ingredients: "White Cake, Horlicks, White Cake, Nuts, Praline"
     },
     "Kifaya Cake": {
       menuName: "KIFAYA CAKE",
+      price: "₹1000/-",
       ingredients: "White Red Cake, Strawberry Crush, Mango Crush, Pista, Nuts, Praline"
     },
     "Kulfi Cake": {
       menuName: "KULFI CAKE",
+      price: "₹1000/-",
       ingredients: "White Cake, Kulfi Mix, Pista, Almond, White Cake"
     },
     "Lotus Biscoff Cake": {
       menuName: "LOTUS",
+      price: "₹1500/-",
       ingredients: "White Cake, Lotus Cheese Cream, Lotus Biscuit, Nuts, Praline"
     },
     "Mango Magic Cake": {
       menuName: "MANGO MAGIC",
+      price: "₹900/-",
       ingredients: "White Cake, White Cake, Mango Gel, Mango Filling"
     },
     "Merryberry Cake": {
       menuName: "MERRYBERRY",
+      price: "₹1000/-",
       ingredients: "White Black Red Cake, Strawberry Crush, Truffle, Black Cake, White Cake, Praline, Nuts"
     },
     "Milk Chocolate Cake": {
       menuName: "MILK CHOCOLATE",
+      price: "₹1000/-",
       ingredients: "Black Cake, Truffle, Nuts, Black Cake"
     },
     "Milk Fantasy Cake": {
       menuName: "MILK FANTACY",
+      price: "₹1000/-",
       ingredients: "White Cake, White Cake, Fresh Milk Cream"
     },
     "Mingle Cake": {
       menuName: "MINGLE CAKE",
+      price: "₹900/-",
       ingredients: "White Cake, Hershey's Syrup, Orange Crush, Wafer Biscuit, Cherry, Praline"
     },
     "Munch Bite Cake": {
       menuName: "MUNCH BITE",
+      price: "₹900/-",
       ingredients: "White Cake, Munch, White Cake, Praline"
     },
     "Nestle Vanilla Cake": {
       menuName: "NESTLE VANILLA",
+      price: "₹900/-",
       ingredients: "White Cake, Praline, White Cake, Horlicks, Truffle"
     },
     "Nut Chocolate Cake": {
       menuName: "NUT CHOCOLATE",
+      price: "₹1200/-",
       ingredients: "Black Cake, Nuts, Truffle, Black Cake"
     },
     "Nutella Cake": {
       menuName: "NUTELLA CAKE",
+      price: "₹1200/-",
       ingredients: "Black Cake, Nutella, Nuts, Black Cake, Praline"
     },
     "Nutty Bubble Cake": {
       menuName: "NUTTY BUBBLE",
+      price: "₹1000/-",
       ingredients: "White Cake, Almond, Nuts, White Chip, Black Chip, Milkmaid"
     },
     "Oreo Flake Cake": {
       menuName: "OREO FLAKE",
+      price: "₹900/-",
       ingredients: "Black Cake, Oreo Biscuit, Truffle"
     },
     "Pineapple Cotex Cake": {
       menuName: "PINEAPPLE COTEX",
+      price: "₹900/-",
       ingredients: "White Cake, White Cake, Pineapple Crush & Filling"
     },
     "Premium Choco Chip Cake": {
       menuName: "PREMIUM CHOCO CHIP",
+      price: "₹1000/-",
       ingredients: "Black Cake, Truffle, Choco Chips"
     },
     "Premium White Chip Cake": {
       menuName: "PREMIUM WHITE CHIP",
+      price: "₹1000/-",
       ingredients: "White Cake, Truffle, White Cake, White Chips"
     },
     "Praline Cake": {
       menuName: "PROLINE",
+      price: "₹900/-",
       ingredients: "White Cake, Praline, Black Cake, White Cake"
     },
     "Red Bee Cake": {
       menuName: "RED BEE",
+      price: "₹1000/-",
       ingredients: "White Black Red Cake, Truffle, Nuts, Black Cake, White Cake, Praline"
     },
     "Red Vancho Cake": {
       menuName: "RED VANCHO",
+      price: "₹1000/-",
       ingredients: "Black Red Cake, Nuts, Black Cake, White Cake, Praline, Truffle"
     },
     "Red Velvet Cake": {
       menuName: "RED VELVET",
+      price: "₹900/-",
       ingredients: "Red Cake, Nuts, White Cake"
     },
     "Snickers Drip Cake": {
       menuName: "SNICKERS DRIP",
+      price: "₹1200/-",
       ingredients: "Black Cake, Snickers, Peanut, Milk Truffle"
     },
     "Spanish Delight Cake": {
       menuName: "SPANISH DELIGHT",
+      price: "₹1200/-",
       ingredients: "Black Cake, Nutella, Boost, White Cake, Black Cake"
     },
     "Strawberry Cake": {
       menuName: "STRAWBERRY",
+      price: "₹900/-",
       ingredients: "White Cake, Strawberry Filling Gel"
     },
     "Vancho Cake": {
       menuName: "VANCHO",
+      price: "₹900/-",
       ingredients: "White Black Cake, Truffle, Nuts, White Cake, Black Cake"
     }
   };
@@ -233,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewerModal = document.getElementById("imageViewerModal");
   const viewerImage = document.getElementById("viewerImage");
   const viewerTitle = document.getElementById("viewerTitle");
+  const viewerPrice = document.getElementById("viewerPrice");
   const viewerIngredientsBox = document.getElementById("viewerIngredientsBox");
   const viewerIngredientsList = document.getElementById("viewerIngredientsList");
   const viewerCategoryTag = document.getElementById("viewerCategoryTag");
@@ -248,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentItemData = {
     title: "",
+    price: "",
     ingredients: "",
     fullSrc: "",
     url: ""
@@ -260,6 +309,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getShareText(includeUrl = true) {
     let text = `🎂 *${currentItemData.title}* from Apsara Bakes!`;
+    if (currentItemData.price) {
+      text += `\n💰 Price: ${currentItemData.price}`;
+    }
     if (currentItemData.ingredients) {
       text += `\n✨ Ingredients: ${currentItemData.ingredients}`;
     }
@@ -309,15 +361,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.removeChild(textarea);
   }
 
-  function openImageViewer(fullSrc, title, ingredients = "", isBakery = false) {
+  function openImageViewer(fullSrc, title, price = "", ingredients = "", isBakery = false) {
     if (!viewerModal) return;
 
-    // Resolve ingredients (for standard cakes)
+    // Resolve ingredients & price (for standard cakes)
     const fallback = cakeData[title] || {};
+    const finalPrice = price || fallback.price || "";
     const finalIngredients = ingredients || fallback.ingredients || "";
 
     currentItemData = {
       title,
+      price: finalPrice,
       ingredients: finalIngredients,
       fullSrc,
       url: getShareUrl(title)
@@ -326,6 +380,16 @@ document.addEventListener("DOMContentLoaded", () => {
     viewerImage.src = fullSrc;
     viewerImage.alt = title;
     viewerTitle.textContent = title;
+
+    if (viewerPrice) {
+      if (finalPrice) {
+        viewerPrice.textContent = finalPrice;
+        viewerPrice.style.display = "inline-flex";
+      } else {
+        viewerPrice.textContent = "";
+        viewerPrice.style.display = "none";
+      }
+    }
 
     // Ingredients section (Shown only for fresh cream cakes that have ingredients)
     if (viewerIngredientsBox && viewerIngredientsList) {
@@ -456,10 +520,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isSwiping || Math.abs(totalDragDist) > 10) return;
       const fullSrc = card.getAttribute("data-full");
       const name = card.getAttribute("data-name") || card.querySelector(".item-name")?.textContent;
+      const price = card.getAttribute("data-price") || "";
       const ingredients = card.getAttribute("data-ingredients") || "";
       const isBakery = Boolean(card.closest("#pageBakery"));
       if (fullSrc) {
-        openImageViewer(fullSrc, name, ingredients, isBakery);
+        openImageViewer(fullSrc, name, price, ingredients, isBakery);
       }
     });
   });
@@ -764,10 +829,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       const fullSrc = targetCard.getAttribute("data-full");
       const name = targetCard.getAttribute("data-name") || targetCard.querySelector(".item-name")?.textContent;
+      const price = targetCard.getAttribute("data-price") || "";
       const ingredients = targetCard.getAttribute("data-ingredients") || "";
       const isBakery = Boolean(targetCard.closest("#pageBakery"));
       setTimeout(() => {
-        openImageViewer(fullSrc, name, ingredients, isBakery);
+        openImageViewer(fullSrc, name, price, ingredients, isBakery);
       }, 350);
     }
   }

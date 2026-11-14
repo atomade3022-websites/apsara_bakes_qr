@@ -1,0 +1,9 @@
+{
+  "name": "apsara-bakes-menu",
+  "version": "1.0.0",
+  "description": "Apsara Bakes Digital Menu with QR Code, Swipe Navigation & WhatsApp Sharing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

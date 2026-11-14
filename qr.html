@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apsara Bakes - Permanent Shop QR Code</title>
+  <link rel="icon" type="image/webp" href="header_logo.webp" />
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <style>
     :root {
@@ -241,7 +242,7 @@
     <h2 class="instruction-title">Scan to View Menu</h2>
     <p class="instruction-desc">Point your phone camera at this QR code to view all Cakes &amp; Bakery items instantly.</p>
 
-    <span class="url-badge" id="urlBadge">https://atomade3022-websites.github.io/apsara_bakes_qr/</span>
+    <span class="url-badge" id="urlBadge">https://qr.apsarabakes.in/</span>
   </div>
 
   <!-- Action Controls -->
@@ -254,7 +255,7 @@
     <div class="url-config-box">
       <label for="customUrlInput">Target Website URL (Update anytime as needed)</label>
       <div class="url-input-group">
-        <input type="text" id="customUrlInput" class="url-input" value="https://atomade3022-websites.github.io/apsara_bakes_qr/" />
+        <input type="text" id="customUrlInput" class="url-input" value="https://qr.apsarabakes.in/" />
         <button class="url-update-btn" id="updateUrlBtn">Update</button>
       </div>
     </div>
@@ -267,12 +268,8 @@
     const urlBadge = document.getElementById('urlBadge');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // Default target website URL
-    let initialUrl = 'https://atomade3022-websites.github.io/apsara_bakes_qr/';
-
-    if (window.location.protocol === 'file:') {
-      initialUrl = 'http://192.168.18.27:8080';
-    }
+    // Default target website URL (Final production domain)
+    let initialUrl = 'https://qr.apsarabakes.in/';
 
     urlInput.value = initialUrl;
     renderQr(initialUrl);
