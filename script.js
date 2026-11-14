@@ -4,243 +4,195 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------------------------------------------------
-  // 1. CAKE INGREDIENTS & PRICES (Apsara Special Fresh Cream Cakes)
+  // 1. CAKE INGREDIENTS (Apsara Special Fresh Cream Cakes)
   // -------------------------------------------------------------------------
   const cakeData = {
-    // Menu Card 1 & 2 items
     "Berry Chocolate Cake": {
       menuName: "BERRY CHOCOLATE",
-      price: "₹1000/-",
       ingredients: "Black Red Cake, Truffle, Milkmaid, Praline, White Chip, Black Chip"
     },
     "Blueberry Cake": {
       menuName: "BLUEBERRY",
-      price: "₹800/-",
       ingredients: "White Cake, Blueberry Filling, Milkmaid, White Chip"
     },
     "Boost Nap Cake": {
       menuName: "BOOST NAP",
-      price: "₹900/-",
       ingredients: "Black Cake, Boost, Black Chip"
     },
     "Butterscotch Delight": {
       menuName: "BUTTERSCOTCH",
-      price: "₹800/-",
       ingredients: "White Cake, White Chip, Praline, Caramel"
     },
     "Caramel Crunch": {
       menuName: "CARAMEL",
-      price: "₹800/-",
       ingredients: "White Cake, Nuts, White Chip, Praline, Caramel Gel"
     },
     "Choco Crunch Cake": {
       menuName: "CHOCO CRUNCH",
-      price: "₹900/-",
       ingredients: "Black Cake, Boost, Horlicks, Choco Filling, Nuts, Black Chip, Praline, Truffle"
     },
     "Choco Truffle Cake": {
       menuName: "CHOCO TRUFFLE",
-      price: "₹800/-",
       ingredients: "Black Cake, Truffle, Black Chip, Nuts"
     },
     "Choco Vanilla Cake": {
       menuName: "CHOCO VANILLA",
-      price: "₹900/-",
       ingredients: "White Black Cake, Black Cake, White Cake, Nuts, Truffle"
     },
     "Choco Velvet Cake": {
       menuName: "CHOCO VELVET",
-      price: "₹900/-",
       ingredients: "Red Cake, Truffle, Nuts, Black Cake, Strawberry Crush"
     },
     "Cocktail Fruit Cake": {
       menuName: "COCKTAIL",
-      price: "₹1300/-",
       ingredients: "White Cake, Fresh Mixed Fruit"
     },
     "Coffee Fresh Cake": {
       menuName: "COFFEE FRESH",
-      price: "₹800/-",
       ingredients: "Black Cake, Truffle, Coffee Powder, Black Cake, Praline, Nuts"
     },
     "Coffee Peanut Cake": {
       menuName: "COFFEE PEANUT",
-      price: "₹900/-",
       ingredients: "White Cake, Peanut, Coffee Powder, Truffle, Black Cake"
     },
     "Crunchy KitKat Cake": {
       menuName: "CRUNCHY KITKAT",
-      price: "₹1400/-",
       ingredients: "Black Cake, Nutella, KitKat, Nuts, Gems"
     },
     "Dates Rich Cake": {
       menuName: "DATES RICH",
-      price: "₹900/-",
       ingredients: "White Cake, Dates, Praline, White Cake, Nuts, Dates Syrup"
     },
     "Dutch Fantasy Cake": {
       menuName: "DUTCH FANTACY",
-      price: "₹1000/-",
       ingredients: "Black Cake, Truffle, Dark Fantasy, Praline, Black Cake"
     },
     "Ferrero Choco Cake": {
       menuName: "FERRARO CHOCO",
-      price: "₹1400/-",
       ingredients: "Black Cake, Nutella, Ferrero Rocher, KitKat, Praline, Nuts"
     },
     "Fudge Nut Cake": {
       menuName: "FUDGE NUT",
-      price: "₹900/-",
       ingredients: "White Cake, Caramel, Praline, Nuts, Black Cake, White Cake"
     },
     "Gemscort Cake": {
       menuName: "GEMSCORT",
-      price: "₹1000/-",
       ingredients: "Black White Cake, Gems, Truffle, Munch, Nuts, Black Cake, White Cake"
     },
     "German Chocolate Cake": {
       menuName: "GERMAN CHOCOLATE",
-      price: "₹900/-",
       ingredients: "Black Cake, Almond, Praline, White Cake, Black Cake, Coconut Powder"
     },
     "Honey Almond Cake": {
       menuName: "HONEY ALMOND",
-      price: "₹900/-",
       ingredients: "White Cake, Pure Honey, Almond, White Cake"
     },
     "Honey Nut Cake": {
       menuName: "HONEY NUT",
-      price: "₹900/-",
       ingredients: "White Cake, Pure Honey, Nuts, White Cake"
     },
     "Horlicks Vanilla Cake": {
       menuName: "HORLICKS VANILLA",
-      price: "₹1000/-",
       ingredients: "White Cake, Horlicks, White Cake, Nuts, Praline"
     },
     "Kifaya Cake": {
       menuName: "KIFAYA CAKE",
-      price: "₹900/-",
       ingredients: "White Red Cake, Strawberry Crush, Mango Crush, Pista, Nuts, Praline"
     },
     "Kulfi Cake": {
       menuName: "KULFI CAKE",
-      price: "₹900/-",
       ingredients: "White Cake, Kulfi Mix, Pista, Almond, White Cake"
     },
     "Lotus Biscoff Cake": {
       menuName: "LOTUS",
-      price: "₹1300/-",
       ingredients: "White Cake, Lotus Cheese Cream, Lotus Biscuit, Nuts, Praline"
     },
     "Mango Magic Cake": {
       menuName: "MANGO MAGIC",
-      price: "₹700/-",
       ingredients: "White Cake, White Cake, Mango Gel, Mango Filling"
     },
     "Merryberry Cake": {
       menuName: "MERRYBERRY",
-      price: "₹900/-",
       ingredients: "White Black Red Cake, Strawberry Crush, Truffle, Black Cake, White Cake, Praline, Nuts"
     },
     "Milk Chocolate Cake": {
       menuName: "MILK CHOCOLATE",
-      price: "₹900/-",
       ingredients: "Black Cake, Truffle, Nuts, Black Cake"
     },
     "Milk Fantasy Cake": {
       menuName: "MILK FANTACY",
-      price: "₹900/-",
       ingredients: "White Cake, White Cake, Fresh Milk Cream"
     },
     "Mingle Cake": {
       menuName: "MINGLE CAKE",
-      price: "₹900/-",
       ingredients: "White Cake, Hershey's Syrup, Orange Crush, Wafer Biscuit, Cherry, Praline"
     },
     "Munch Bite Cake": {
       menuName: "MUNCH BITE",
-      price: "₹800/-",
       ingredients: "White Cake, Munch, White Cake, Praline"
     },
     "Nestle Vanilla Cake": {
       menuName: "NESTLE VANILLA",
-      price: "₹800/-",
       ingredients: "White Cake, Praline, White Cake, Horlicks, Truffle"
     },
     "Nut Chocolate Cake": {
       menuName: "NUT CHOCOLATE",
-      price: "₹1000/-",
       ingredients: "Black Cake, Nuts, Truffle, Black Cake"
     },
     "Nutella Cake": {
       menuName: "NUTELLA CAKE",
-      price: "₹900/-",
       ingredients: "Black Cake, Nutella, Nuts, Black Cake, Praline"
     },
     "Nutty Bubble Cake": {
       menuName: "NUTTY BUBBLE",
-      price: "₹900/-",
       ingredients: "White Cake, Almond, Nuts, White Chip, Black Chip, Milkmaid"
     },
     "Oreo Flake Cake": {
       menuName: "OREO FLAKE",
-      price: "₹800/-",
       ingredients: "Black Cake, Oreo Biscuit, Truffle"
     },
     "Pineapple Cotex Cake": {
       menuName: "PINEAPPLE COTEX",
-      price: "₹700/-",
       ingredients: "White Cake, White Cake, Pineapple Crush & Filling"
     },
     "Premium Choco Chip Cake": {
       menuName: "PREMIUM CHOCO CHIP",
-      price: "₹900/-",
       ingredients: "Black Cake, Truffle, Choco Chips"
     },
     "Premium White Chip Cake": {
       menuName: "PREMIUM WHITE CHIP",
-      price: "₹900/-",
       ingredients: "White Cake, Truffle, White Cake, White Chips"
     },
     "Praline Cake": {
       menuName: "PROLINE",
-      price: "₹700/-",
       ingredients: "White Cake, Praline, Black Cake, White Cake"
     },
     "Red Bee Cake": {
       menuName: "RED BEE",
-      price: "₹900/-",
       ingredients: "White Black Red Cake, Truffle, Nuts, Black Cake, White Cake, Praline"
     },
     "Red Vancho Cake": {
       menuName: "RED VANCHO",
-      price: "₹900/-",
       ingredients: "Black Red Cake, Nuts, Black Cake, White Cake, Praline, Truffle"
     },
     "Red Velvet Cake": {
       menuName: "RED VELVET",
-      price: "₹800/-",
       ingredients: "Red Cake, Nuts, White Cake"
     },
     "Snickers Drip Cake": {
       menuName: "SNICKERS DRIP",
-      price: "₹1100/-",
       ingredients: "Black Cake, Snickers, Peanut, Milk Truffle"
     },
     "Spanish Delight Cake": {
       menuName: "SPANISH DELIGHT",
-      price: "₹1000/-",
       ingredients: "Black Cake, Nutella, Boost, White Cake, Black Cake"
     },
     "Strawberry Cake": {
       menuName: "STRAWBERRY",
-      price: "₹800/-",
       ingredients: "White Cake, Strawberry Filling Gel"
     },
     "Vancho Cake": {
       menuName: "VANCHO",
-      price: "₹800/-",
       ingredients: "White Black Cake, Truffle, Nuts, White Cake, Black Cake"
     }
   };
@@ -250,8 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------------------------------------------------
   const popup = document.getElementById("welcomePopup");
   const closeBtn = document.getElementById("closePopupBtn");
-  const countdownEl = document.getElementById("popupCountdown");
-  let timeLeft = 4;
   let closed = false;
 
   const closePopup = () => {
@@ -272,23 +222,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const timerInterval = setInterval(() => {
-    timeLeft -= 1;
-    if (timeLeft > 0) {
-      if (countdownEl) countdownEl.textContent = `Closing in ${timeLeft}s...`;
-    } else {
-      clearInterval(timerInterval);
-      closePopup();
-    }
-  }, 1000);
+  // Auto-close after 2 seconds without mentioning time
+  setTimeout(() => {
+    closePopup();
+  }, 2000);
 
   // -------------------------------------------------------------------------
-  // 3. FULLSCREEN IMAGE VIEWER MODAL (WHITE BACKGROUND + INGREDIENTS + SHARE)
+  // 3. FULLSCREEN IMAGE VIEWER MODAL (WHITE BACKGROUND + SHARE)
   // -------------------------------------------------------------------------
   const viewerModal = document.getElementById("imageViewerModal");
   const viewerImage = document.getElementById("viewerImage");
   const viewerTitle = document.getElementById("viewerTitle");
-  const viewerPrice = document.getElementById("viewerPrice");
   const viewerIngredientsBox = document.getElementById("viewerIngredientsBox");
   const viewerIngredientsList = document.getElementById("viewerIngredientsList");
   const viewerCategoryTag = document.getElementById("viewerCategoryTag");
@@ -304,7 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentItemData = {
     title: "",
-    price: "",
     ingredients: "",
     fullSrc: "",
     url: ""
@@ -317,9 +260,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getShareText(includeUrl = true) {
     let text = `🎂 *${currentItemData.title}* from Apsara Bakes!`;
-    if (currentItemData.price) {
-      text += `\n💰 Price: ${currentItemData.price}`;
-    }
     if (currentItemData.ingredients) {
       text += `\n✨ Ingredients: ${currentItemData.ingredients}`;
     }
@@ -369,17 +309,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.removeChild(textarea);
   }
 
-  function openImageViewer(fullSrc, title, price = "", ingredients = "") {
+  function openImageViewer(fullSrc, title, ingredients = "", isBakery = false) {
     if (!viewerModal) return;
 
-    // Resolve ingredients and price from dataset or lookup dictionary
+    // Resolve ingredients (for standard cakes)
     const fallback = cakeData[title] || {};
-    const finalPrice = price || fallback.price || "";
     const finalIngredients = ingredients || fallback.ingredients || "";
 
     currentItemData = {
       title,
-      price: finalPrice,
       ingredients: finalIngredients,
       fullSrc,
       url: getShareUrl(title)
@@ -389,17 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
     viewerImage.alt = title;
     viewerTitle.textContent = title;
 
-    // Price badge
-    if (viewerPrice) {
-      if (finalPrice) {
-        viewerPrice.textContent = finalPrice;
-        viewerPrice.style.display = "inline-flex";
-      } else {
-        viewerPrice.style.display = "none";
-      }
-    }
-
-    // Ingredients section (Shown in fullscreen mode for cakes)
+    // Ingredients section (Shown only for fresh cream cakes that have ingredients)
     if (viewerIngredientsBox && viewerIngredientsList) {
       if (finalIngredients) {
         viewerIngredientsList.innerHTML = "";
@@ -414,7 +342,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (viewerCategoryTag) viewerCategoryTag.style.display = "none";
       } else {
         viewerIngredientsBox.style.display = "none";
-        if (viewerCategoryTag) viewerCategoryTag.style.display = "inline-flex";
+        if (viewerCategoryTag) {
+          if (isBakery) {
+            viewerCategoryTag.style.display = "inline-flex";
+          } else {
+            viewerCategoryTag.style.display = "none";
+          }
+        }
       }
     }
 
@@ -459,7 +393,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const shareUrl = currentItemData.url;
       const text = getShareText(false);
 
-      // On mobile devices supporting Web Share, open native share drawer (Instagram option)
       if (navigator.share) {
         try {
           await navigator.share({
@@ -473,7 +406,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Fallback: copy link and redirect to Instagram
       copyToClipboard(shareUrl, "Link copied! Opening Instagram...");
       setTimeout(() => {
         window.open("https://www.instagram.com/", "_blank");
@@ -515,33 +447,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Attach click listener to each item card across both pages
+  // Attach click listener to each item card across all pages
   const cards = document.querySelectorAll(".item-card");
   cards.forEach(card => {
     card.addEventListener("click", () => {
       if (isSwiping || Math.abs(totalDragDist) > 10) return;
       const fullSrc = card.getAttribute("data-full");
       const name = card.getAttribute("data-name") || card.querySelector(".item-name")?.textContent;
-      const price = card.getAttribute("data-price") || "";
       const ingredients = card.getAttribute("data-ingredients") || "";
+      const isBakery = Boolean(card.closest("#pageBakery"));
       if (fullSrc) {
-        openImageViewer(fullSrc, name, price, ingredients);
+        openImageViewer(fullSrc, name, ingredients, isBakery);
       }
     });
   });
 
   // -------------------------------------------------------------------------
-  // 4. PAGE NAVIGATION & TABS
+  // 4. PAGE NAVIGATION & TABS (3 SECTIONS: CAKES, BAKERY, CUSTOMIZED CAKES)
   // -------------------------------------------------------------------------
   const swipeContainer = document.getElementById("swipeContainer");
   const tabCakes = document.getElementById("tabCakes");
   const tabBakery = document.getElementById("tabBakery");
+  const tabCustomized = document.getElementById("tabCustomized");
   const dot0 = document.getElementById("dot0");
   const dot1 = document.getElementById("dot1");
+  const dot2 = document.getElementById("dot2");
   const swipeViewport = document.getElementById("swipeViewport");
 
-  let currentPage = 0; // 0 = Cakes, 1 = Bakery Items
-  const totalPages = 2;
+  let currentPage = 0; // 0 = Cakes, 1 = Bakery Items, 2 = Customized Cakes
+  const totalPages = 3;
+
+  const tabs = [tabCakes, tabBakery, tabCustomized];
+  const dots = [dot0, dot1, dot2];
 
   function goToPage(pageIndex) {
     if (pageIndex < 0) pageIndex = 0;
@@ -549,28 +486,31 @@ document.addEventListener("DOMContentLoaded", () => {
     currentPage = pageIndex;
 
     swipeContainer.style.transition = "transform 0.32s cubic-bezier(0.2, 0.9, 0.3, 1)";
-    swipeContainer.style.transform = `translateX(-${currentPage * 50}%)`;
+    swipeContainer.style.transform = `translateX(-${currentPage * (100 / totalPages)}%)`;
 
-    if (currentPage === 0) {
-      tabCakes.classList.add("active");
-      tabBakery.classList.remove("active");
-      dot0.classList.add("active");
-      dot1.classList.remove("active");
-    } else {
-      tabBakery.classList.add("active");
-      tabCakes.classList.remove("active");
-      dot1.classList.add("active");
-      dot0.classList.remove("active");
-    }
+    tabs.forEach((tab, idx) => {
+      if (!tab) return;
+      if (idx === currentPage) tab.classList.add("active");
+      else tab.classList.remove("active");
+    });
+
+    dots.forEach((dot, idx) => {
+      if (!dot) return;
+      if (idx === currentPage) dot.classList.add("active");
+      else dot.classList.remove("active");
+    });
   }
 
   if (tabCakes) tabCakes.addEventListener("click", () => goToPage(0));
   if (tabBakery) tabBakery.addEventListener("click", () => goToPage(1));
+  if (tabCustomized) tabCustomized.addEventListener("click", () => goToPage(2));
+
   if (dot0) dot0.addEventListener("click", () => goToPage(0));
   if (dot1) dot1.addEventListener("click", () => goToPage(1));
+  if (dot2) dot2.addEventListener("click", () => goToPage(2));
 
   // -------------------------------------------------------------------------
-  // 5. TOUCH SWIPE GESTURES (Mobile phone screen swipe)
+  // 5. TOUCH SWIPE GESTURES (Mobile phone screen swipe across 3 pages)
   // -------------------------------------------------------------------------
   let touchStartX = 0;
   let touchStartY = 0;
@@ -604,13 +544,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (isHorizontal) {
-      const basePercent = -currentPage * 50;
+      const stepPercent = 100 / totalPages;
+      const basePercent = -currentPage * stepPercent;
       const viewportWidth = swipeViewport.clientWidth || 360;
-      const dragPercent = (diffX / viewportWidth) * 50;
+      const dragPercent = (diffX / viewportWidth) * stepPercent;
       
       let finalPercent = basePercent + dragPercent;
-      if (finalPercent > 0) finalPercent = dragPercent * 0.25;
-      if (finalPercent < -50) finalPercent = -50 + (finalPercent + 50) * 0.25;
+      const maxLimit = 0;
+      const minLimit = -((totalPages - 1) * stepPercent);
+
+      if (finalPercent > maxLimit) finalPercent = dragPercent * 0.25;
+      if (finalPercent < minLimit) finalPercent = minLimit + (finalPercent - minLimit) * 0.25;
 
       swipeContainer.style.transform = `translateX(${finalPercent}%)`;
     }
@@ -677,10 +621,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeImageViewer();
-    } else if (e.key === "ArrowRight" && currentPage === 0) {
-      goToPage(1);
-    } else if (e.key === "ArrowLeft" && currentPage === 1) {
-      goToPage(0);
+    } else if (e.key === "ArrowRight" && currentPage < totalPages - 1) {
+      goToPage(currentPage + 1);
+    } else if (e.key === "ArrowLeft" && currentPage > 0) {
+      goToPage(currentPage - 1);
     }
   });
 
@@ -690,7 +634,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const sharedItemName = urlParams.get("item");
   if (sharedItemName) {
-    // If arriving via shared link, dismiss welcome popup immediately
     if (popup) {
       closed = true;
       popup.style.display = "none";
@@ -704,13 +647,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetCard) {
       if (targetCard.closest("#pageBakery")) {
         goToPage(1);
+      } else if (targetCard.closest("#pageCustomized")) {
+        goToPage(2);
+      } else {
+        goToPage(0);
       }
       const fullSrc = targetCard.getAttribute("data-full");
       const name = targetCard.getAttribute("data-name") || targetCard.querySelector(".item-name")?.textContent;
-      const price = targetCard.getAttribute("data-price") || "";
       const ingredients = targetCard.getAttribute("data-ingredients") || "";
+      const isBakery = Boolean(targetCard.closest("#pageBakery"));
       setTimeout(() => {
-        openImageViewer(fullSrc, name, price, ingredients);
+        openImageViewer(fullSrc, name, ingredients, isBakery);
       }, 350);
     }
   }

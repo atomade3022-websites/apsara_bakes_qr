@@ -94,10 +94,10 @@ body {
 .page-nav {
   position: relative;
   display: flex;
-  max-width: 440px;
+  max-width: 540px;
   margin: 0 auto;
-  padding: 2px 16px 12px;
-  gap: 8px;
+  padding: 2px 12px 12px;
+  gap: 6px;
 }
 
 .nav-tab {
@@ -106,16 +106,33 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 14px;
+  padding: 9px 8px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
   background: var(--bg-subtle);
   color: var(--text-secondary);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .page-nav {
+    padding: 2px 8px 10px;
+    gap: 4px;
+  }
+  .nav-tab {
+    padding: 8px 5px;
+    font-size: 11px;
+    gap: 3px;
+  }
+  .tab-count {
+    font-size: 9.5px;
+    padding: 1px 4px;
+  }
 }
 
 .nav-tab.active {
@@ -250,7 +267,7 @@ body {
   height: 100%;
   background-color: var(--accent-dark);
   transform-origin: left;
-  animation: countdownProgress 4s linear forwards;
+  animation: countdownProgress 2s linear forwards;
 }
 
 @keyframes countdownProgress {
@@ -311,14 +328,14 @@ body {
 
 .swipe-container {
   display: flex;
-  width: 200%;
+  width: 300%;
   height: 100%;
   transition: transform 0.32s cubic-bezier(0.2, 0.9, 0.3, 1);
   will-change: transform;
 }
 
 .menu-page {
-  width: 50%;
+  width: 33.333333%;
   height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -547,19 +564,6 @@ body {
   letter-spacing: -0.01em;
   margin: 0;
   text-shadow: none;
-}
-
-.viewer-price-badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 14.5px;
-  font-weight: 700;
-  color: #92400e;
-  background: #fef3c7;
-  border: 1px solid #fde68a;
-  padding: 4px 12px;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px rgba(180, 83, 9, 0.08);
 }
 
 .viewer-ingredients-box {
