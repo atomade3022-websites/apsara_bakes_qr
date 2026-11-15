@@ -244,6 +244,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const dessertData = {
+    "Brownie": { price: "₹100/-" },
+    "Caramel Cheesecake": { price: "₹140/-" },
+    "Donut": { price: "₹60/-" },
+    "Lotus Cheesecake": { price: "₹140/-" },
+    "Mousse Cup": { price: "₹70/-" },
+    "Nutella Cheesecake": { price: "₹140/-" },
+    "Red Velvet": { price: "₹100/-" },
+    "Vancho Cake": { price: "₹100/-" }
+  };
+
   // -------------------------------------------------------------------------
   // 2. WISH POPUP: "Thank you for choosing Apsara Bakes. Have a sweet day!"
   // -------------------------------------------------------------------------
@@ -361,11 +372,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.removeChild(textarea);
   }
 
-  function openImageViewer(fullSrc, title, price = "", ingredients = "", isBakery = false) {
+  function openImageViewer(fullSrc, title, price = "", ingredients = "", isBakery = false, isDessert = false) {
     if (!viewerModal) return;
 
-    // Resolve ingredients & price (for standard cakes)
-    const fallback = cakeData[title] || {};
+    // Resolve ingredients & price (for standard cakes or desserts)
+    const fallback = (isDessert ? dessertData[title] : cakeData[title]) || {};
     const finalPrice = price || fallback.price || "";
     const finalIngredients = ingredients || fallback.ingredients || "";
 
@@ -409,6 +420,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (viewerCategoryTag) {
           if (isBakery) {
             viewerCategoryTag.style.display = "inline-flex";
+            const span = viewerCategoryTag.querySelector("span");
+            if (span) span.textContent = "Authentic Kerala Bakery Special";
+          } else if (isDessert) {
+            viewerCategoryTag.style.display = "inline-flex";
+            const span = viewerCategoryTag.querySelector("span");
+            if (span) span.textContent = "Signature Plated Dessert";
           } else {
             viewerCategoryTag.style.display = "none";
           }
@@ -523,8 +540,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const price = card.getAttribute("data-price") || "";
       const ingredients = card.getAttribute("data-ingredients") || "";
       const isBakery = Boolean(card.closest("#pageBakery"));
+      const isDessert = Boolean(card.closest("#pageDesserts"));
       if (fullSrc) {
-        openImageViewer(fullSrc, name, price, ingredients, isBakery);
+        openImageViewer(fullSrc, name, price, ingredients, isBakery, isDessert);
       }
     });
   });
@@ -536,9 +554,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabCakes = document.getElementById("tabCakes");
   const tabBakery = document.getElementById("tabBakery");
   const tabCustomized = document.getElementById("tabCustomized");
+  const tabDesserts = document.getElementById("tabDesserts");
   const dot0 = document.getElementById("dot0");
   const dot1 = document.getElementById("dot1");
   const dot2 = document.getElementById("dot2");
+  const dot3 = document.getElementById("dot3");
   const swipeViewport = document.getElementById("swipeViewport");
 
   // Slide to next section animated indicator
@@ -561,7 +581,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (slideGuideText) slideGuideText.textContent = "Slide for Customized Cakes";
       if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
     } else if (pageIndex === 2) {
-      if (!visitedSections.has(1)) {
+      if (slideGuideText) slideGuideText.textContent = "Slide for Plated Desserts";
+      if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
+    } else if (pageIndex === 3) {
+      if (!visitedSections.has(2)) {
+        if (slideGuideText) slideGuideText.textContent = "Slide for Customized Cakes";
+        if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
+      } else if (!visitedSections.has(1)) {
         if (slideGuideText) slideGuideText.textContent = "Slide for Bakery Items";
         if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
       } else if (!visitedSections.has(0)) {
@@ -579,7 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showSlideGuide() {
     if (!slideGuideHint || allSectionsVisited) return;
-    if (visitedSections.size >= 3) {
+    if (visitedSections.size >= 4) {
       stopSlideGuidePermanently();
       return;
     }
@@ -604,7 +630,7 @@ document.addEventListener("DOMContentLoaded", () => {
     visitedSections.add(newPageIndex);
 
     // If all 3 sections (0, 1, 2) have been visited, permanently stop animation
-    if (visitedSections.has(0) && visitedSections.has(1) && visitedSections.has(2)) {
+    if (visitedSections.has(0) && visitedSections.has(1) && visitedSections.has(2) && visitedSections.has(3)) {
       stopSlideGuidePermanently();
       return;
     }
@@ -617,8 +643,9 @@ document.addEventListener("DOMContentLoaded", () => {
     slideGuideHint.addEventListener("click", () => {
       if (currentPage < totalPages - 1) {
         goToPage(currentPage + 1);
-      } else if (currentPage === 2) {
-        if (!visitedSections.has(1)) goToPage(1);
+      } else if (currentPage === 3) {
+        if (!visitedSections.has(2)) goToPage(2);
+        else if (!visitedSections.has(1)) goToPage(1);
         else if (!visitedSections.has(0)) goToPage(0);
       }
     });
@@ -647,11 +674,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", onScrollHandler, { passive: true });
   document.addEventListener("scroll", onScrollHandler, { passive: true });
 
-  let currentPage = 0; // 0 = Cakes, 1 = Bakery Items, 2 = Customized Cakes
-  const totalPages = 3;
+  let currentPage = 0; // 0 = Cakes, 1 = Bakery Items, 2 = Customized Cakes, 3 = Plated Desserts
+  const totalPages = 4;
 
-  const tabs = [tabCakes, tabBakery, tabCustomized];
-  const dots = [dot0, dot1, dot2];
+  const tabs = [tabCakes, tabBakery, tabCustomized, tabDesserts];
+  const dots = [dot0, dot1, dot2, dot3];
 
   function goToPage(pageIndex) {
     if (pageIndex < 0) pageIndex = 0;
@@ -663,8 +690,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tabs.forEach((tab, idx) => {
       if (!tab) return;
-      if (idx === currentPage) tab.classList.add("active");
-      else tab.classList.remove("active");
+      if (idx === currentPage) {
+        tab.classList.add("active");
+        if (typeof tab.scrollIntoView === "function") {
+          tab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        }
+      } else {
+        tab.classList.remove("active");
+      }
     });
 
     dots.forEach((dot, idx) => {
@@ -679,10 +712,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabCakes) tabCakes.addEventListener("click", () => goToPage(0));
   if (tabBakery) tabBakery.addEventListener("click", () => goToPage(1));
   if (tabCustomized) tabCustomized.addEventListener("click", () => goToPage(2));
+  if (tabDesserts) tabDesserts.addEventListener("click", () => goToPage(3));
 
   if (dot0) dot0.addEventListener("click", () => goToPage(0));
   if (dot1) dot1.addEventListener("click", () => goToPage(1));
   if (dot2) dot2.addEventListener("click", () => goToPage(2));
+  if (dot3) dot3.addEventListener("click", () => goToPage(3));
 
   // -------------------------------------------------------------------------
   // 5. TOUCH SWIPE GESTURES (Mobile phone screen swipe across 3 pages)
@@ -816,7 +851,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const targetCard = Array.from(document.querySelectorAll(".item-card")).find(c => {
       const n = c.getAttribute("data-name") || c.querySelector(".item-name")?.textContent?.trim();
-      return n && n.toLowerCase() === sharedItemName.toLowerCase();
+      if (!n) return false;
+      const cleanN = n.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const cleanShared = sharedItemName.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return cleanN === cleanShared || cleanN.includes(cleanShared) || cleanShared.includes(cleanN);
     });
 
     if (targetCard) {
@@ -824,6 +862,8 @@ document.addEventListener("DOMContentLoaded", () => {
         goToPage(1);
       } else if (targetCard.closest("#pageCustomized")) {
         goToPage(2);
+      } else if (targetCard.closest("#pageDesserts")) {
+        goToPage(3);
       } else {
         goToPage(0);
       }
@@ -832,8 +872,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const price = targetCard.getAttribute("data-price") || "";
       const ingredients = targetCard.getAttribute("data-ingredients") || "";
       const isBakery = Boolean(targetCard.closest("#pageBakery"));
+      const isDessert = Boolean(targetCard.closest("#pageDesserts"));
       setTimeout(() => {
-        openImageViewer(fullSrc, name, price, ingredients, isBakery);
+        openImageViewer(fullSrc, name, price, ingredients, isBakery, isDessert);
       }, 350);
     }
   }
