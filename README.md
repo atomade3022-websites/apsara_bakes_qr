@@ -1,13 +1,14 @@
-# Apsara Bakes - Digital Menu Web App
+ # Apsara Bakes - Digital Menu Web App
 
 Official digital menu web application for **Apsara Bakes** (https://qr.apsarabakes.in/).
 
 ## Features
-- **4 Categories**:
+- **5 Categories**:
   1. Fresh Cream Cakes (47 items with updated prices & ingredient details)
-  2. Authentic Bakery Items (47 traditional Kerala bakery specialties)
+  2. Savouries (47 authentic Kerala bakery savouries & snacks)
   3. Customized Cakes (50 celebration cakes)
   4. Plated Desserts (8 specialty plated desserts with updated prices)
+  5. Plum Cakes (9 festive plum, fruit & loaf cakes with updated prices)
 - **Interactive UI**:
   - Touch-swipe category navigation with animated slide hints
   - Fullscreen viewer modal with crisp white background

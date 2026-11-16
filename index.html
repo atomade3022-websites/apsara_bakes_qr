@@ -50,7 +50,7 @@
         <span class="tab-count">47</span>
       </button>
       <button class="nav-tab" id="tabBakery" data-page="1">
-        <span class="tab-label">Bakery Items</span>
+        <span class="tab-label">Savouries</span>
         <span class="tab-count">47</span>
       </button>
       <button class="nav-tab" id="tabCustomized" data-page="2">
@@ -60,6 +60,10 @@
       <button class="nav-tab" id="tabDesserts" data-page="3">
         <span class="tab-label">Plated Desserts</span>
         <span class="tab-count">8</span>
+      </button>
+      <button class="nav-tab" id="tabPlum" data-page="4">
+        <span class="tab-label">Plum Cakes</span>
+        <span class="tab-count">9</span>
       </button>
       <div class="nav-indicator" id="navIndicator"></div>
     </nav>
@@ -1314,6 +1318,83 @@
           </article>
         </div>
       </section>
+      <!-- PAGE 5: PLUM CAKES (9 ITEMS) -->
+      <section class="menu-page" id="pagePlum" aria-label="Plum Cakes">
+        <div class="items-grid">
+          <article class="item-card" data-name="Butterscotch Royal Cake" data-price="₹400/-" data-full="plum_01_full.webp">
+            <div class="item-img-box">
+              <img src="plum_01.webp" alt="Butterscotch Royal Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Butterscotch Royal Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Carrot Cake" data-price="₹150/-" data-full="plum_02_full.webp">
+            <div class="item-img-box">
+              <img src="plum_02.webp" alt="Carrot Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Carrot Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Dates Cake" data-price="₹250/-" data-full="plum_03_full.webp">
+            <div class="item-img-box">
+              <img src="plum_03.webp" alt="Dates Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Dates Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="English Plum Cake" data-price="₹250/-" data-full="plum_04_full.webp">
+            <div class="item-img-box">
+              <img src="plum_04.webp" alt="English Plum Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">English Plum Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Exotic Plum Cake" data-price="₹300/-" data-full="plum_05_full.webp">
+            <div class="item-img-box">
+              <img src="plum_05.webp" alt="Exotic Plum Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Exotic Plum Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Golden Plum Cake" data-price="₹180/-" data-full="plum_06_full.webp">
+            <div class="item-img-box">
+              <img src="plum_06.webp" alt="Golden Plum Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Golden Plum Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Irish Plum Cake" data-price="₹220/-" data-full="plum_07_full.webp">
+            <div class="item-img-box">
+              <img src="plum_07.webp" alt="Irish Plum Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Irish Plum Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Marble Cake" data-price="₹180/-" data-full="plum_08_full.webp">
+            <div class="item-img-box">
+              <img src="plum_08.webp" alt="Marble Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Marble Cake</h3>
+            </div>
+          </article>
+          <article class="item-card" data-name="Wheat Plum Cake" data-price="₹250/-" data-full="plum_09_full.webp">
+            <div class="item-img-box">
+              <img src="plum_09.webp" alt="Wheat Plum Cake" loading="lazy" width="450" height="450" />
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">Wheat Plum Cake</h3>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -1401,7 +1482,7 @@
   <!-- ANIMATED SLIDE TO NEXT SECTION INDICATOR -->
   <aside id="slideGuideHint" class="slide-guide-hint" aria-label="Slide to next section" title="Slide to next section">
     <div class="slide-guide-content">
-      <span id="slideGuideText" class="slide-guide-text">Slide for Bakery Items</span>
+      <span id="slideGuideText" class="slide-guide-text">Slide for Savouries</span>
       <span class="slide-guide-arrow-box" aria-hidden="true">
         <svg class="slide-guide-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1415,9 +1496,10 @@
   <footer class="app-footer">
     <div class="dots-indicator">
       <span class="dot active" id="dot0" data-page="0" aria-label="Page 1: Cakes"></span>
-      <span class="dot" id="dot1" data-page="1" aria-label="Page 2: Bakery Items"></span>
+      <span class="dot" id="dot1" data-page="1" aria-label="Page 2: Savouries"></span>
       <span class="dot" id="dot2" data-page="2" aria-label="Page 3: Customized Cakes"></span>
       <span class="dot" id="dot3" data-page="3" aria-label="Page 4: Plated Desserts"></span>
+      <span class="dot" id="dot4" data-page="4" aria-label="Page 5: Plum Cakes"></span>
     </div>
   </footer>
 

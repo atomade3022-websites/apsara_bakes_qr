@@ -244,6 +244,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+
+  const plumData = {
+    "Butterscotch Royal Cake": { price: "₹400/-" },
+    "Carrot Cake": { price: "₹150/-" },
+    "Dates Cake": { price: "₹250/-" },
+    "English Plum Cake": { price: "₹250/-" },
+    "Exotic Plum Cake": { price: "₹300/-" },
+    "Golden Plum Cake": { price: "₹180/-" },
+    "Irish Plum Cake": { price: "₹220/-" },
+    "Marble Cake": { price: "₹180/-" },
+    "Wheat Plum Cake": { price: "₹250/-" }
+  };
   const dessertData = {
     "Brownie": { price: "₹100/-" },
     "Caramel Cheesecake": { price: "₹140/-" },
@@ -372,11 +384,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.removeChild(textarea);
   }
 
-  function openImageViewer(fullSrc, title, price = "", ingredients = "", isBakery = false, isDessert = false) {
+  function openImageViewer(fullSrc, title, price = "", ingredients = "", isBakery = false, isDessert = false, isPlum = false) {
     if (!viewerModal) return;
 
     // Resolve ingredients & price (for standard cakes or desserts)
-    const fallback = (isDessert ? dessertData[title] : cakeData[title]) || {};
+    const fallback = (isPlum ? plumData[title] : (isDessert ? dessertData[title] : cakeData[title])) || {};
     const finalPrice = price || fallback.price || "";
     const finalIngredients = ingredients || fallback.ingredients || "";
 
@@ -421,11 +433,15 @@ document.addEventListener("DOMContentLoaded", () => {
           if (isBakery) {
             viewerCategoryTag.style.display = "inline-flex";
             const span = viewerCategoryTag.querySelector("span");
-            if (span) span.textContent = "Authentic Kerala Bakery Special";
+            if (span) span.textContent = "Authentic Kerala Savouries";
           } else if (isDessert) {
             viewerCategoryTag.style.display = "inline-flex";
             const span = viewerCategoryTag.querySelector("span");
             if (span) span.textContent = "Signature Plated Dessert";
+          } else if (isPlum) {
+            viewerCategoryTag.style.display = "inline-flex";
+            const span = viewerCategoryTag.querySelector("span");
+            if (span) span.textContent = "Special Plum & Loaf Cake";
           } else {
             viewerCategoryTag.style.display = "none";
           }
@@ -541,8 +557,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const ingredients = card.getAttribute("data-ingredients") || "";
       const isBakery = Boolean(card.closest("#pageBakery"));
       const isDessert = Boolean(card.closest("#pageDesserts"));
+      const isPlum = Boolean(card.closest("#pagePlum"));
       if (fullSrc) {
-        openImageViewer(fullSrc, name, price, ingredients, isBakery, isDessert);
+        openImageViewer(fullSrc, name, price, ingredients, isBakery, isDessert, isPlum);
       }
     });
   });
@@ -555,10 +572,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabBakery = document.getElementById("tabBakery");
   const tabCustomized = document.getElementById("tabCustomized");
   const tabDesserts = document.getElementById("tabDesserts");
+  const tabPlum = document.getElementById("tabPlum");
   const dot0 = document.getElementById("dot0");
   const dot1 = document.getElementById("dot1");
   const dot2 = document.getElementById("dot2");
   const dot3 = document.getElementById("dot3");
+  const dot4 = document.getElementById("dot4");
   const swipeViewport = document.getElementById("swipeViewport");
 
   // Slide to next section animated indicator
@@ -569,31 +588,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const visitedSections = new Set([0]); // Starts on section 0 (Cakes)
   let allSectionsVisited = false;
   let scrollStopTimer = null;
+  let nextTargetSection = 1;
+
+  const sectionNames = [
+    "Cakes",
+    "Savouries",
+    "Customized Cakes",
+    "Plated Desserts",
+    "Plum Cakes"
+  ];
 
   function updateSlideGuideText(pageIndex) {
     if (allSectionsVisited || !slideGuideHint) return;
-    const arrowIcon = slideGuideHint.querySelector(".slide-guide-arrow-icon");
+    const arrowBox = slideGuideHint.querySelector(".slide-guide-arrow-box");
 
-    if (pageIndex === 0) {
-      if (slideGuideText) slideGuideText.textContent = "Slide for Bakery Items";
-      if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
-    } else if (pageIndex === 1) {
-      if (slideGuideText) slideGuideText.textContent = "Slide for Customized Cakes";
-      if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
-    } else if (pageIndex === 2) {
-      if (slideGuideText) slideGuideText.textContent = "Slide for Plated Desserts";
-      if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
-    } else if (pageIndex === 3) {
-      if (!visitedSections.has(2)) {
-        if (slideGuideText) slideGuideText.textContent = "Slide for Customized Cakes";
-        if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
-      } else if (!visitedSections.has(1)) {
-        if (slideGuideText) slideGuideText.textContent = "Slide for Bakery Items";
-        if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
-      } else if (!visitedSections.has(0)) {
-        if (slideGuideText) slideGuideText.textContent = "Slide for Cakes";
-        if (arrowIcon) arrowIcon.style.transform = "rotate(180deg)";
+    // 1. Search forward for unvisited section
+    let target = -1;
+    for (let i = pageIndex + 1; i < totalPages; i++) {
+      if (!visitedSections.has(i)) {
+        target = i;
+        break;
       }
+    }
+
+    // 2. If no forward section is unvisited, search backward
+    if (target === -1) {
+      for (let i = pageIndex - 1; i >= 0; i--) {
+        if (!visitedSections.has(i)) {
+          target = i;
+          break;
+        }
+      }
+    }
+
+    // 3. If all sections have been visited, stop permanently
+    if (target === -1 || visitedSections.size >= totalPages) {
+      stopSlideGuidePermanently();
+      return;
+    }
+
+    nextTargetSection = target;
+    const isForward = target > pageIndex;
+
+    if (slideGuideText) {
+      slideGuideText.textContent = `Slide for ${sectionNames[target]}`;
+    }
+
+    // Point arrow towards the target section: right (0deg) for forward, left (180deg) for backward
+    if (arrowBox) {
+      arrowBox.style.transform = isForward ? "rotate(0deg)" : "rotate(180deg)";
     }
   }
 
@@ -605,7 +648,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showSlideGuide() {
     if (!slideGuideHint || allSectionsVisited) return;
-    if (visitedSections.size >= 4) {
+    if (visitedSections.size >= totalPages) {
       stopSlideGuidePermanently();
       return;
     }
@@ -629,8 +672,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleSectionChange(newPageIndex) {
     visitedSections.add(newPageIndex);
 
-    // If all 3 sections (0, 1, 2) have been visited, permanently stop animation
-    if (visitedSections.has(0) && visitedSections.has(1) && visitedSections.has(2) && visitedSections.has(3)) {
+    // If all sections have been visited, permanently stop animation
+    if (visitedSections.size >= totalPages) {
       stopSlideGuidePermanently();
       return;
     }
@@ -641,12 +684,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (slideGuideHint) {
     slideGuideHint.addEventListener("click", () => {
-      if (currentPage < totalPages - 1) {
+      if (nextTargetSection >= 0 && nextTargetSection < totalPages) {
+        goToPage(nextTargetSection);
+      } else if (currentPage < totalPages - 1) {
         goToPage(currentPage + 1);
-      } else if (currentPage === 3) {
-        if (!visitedSections.has(2)) goToPage(2);
-        else if (!visitedSections.has(1)) goToPage(1);
-        else if (!visitedSections.has(0)) goToPage(0);
       }
     });
   }
@@ -674,11 +715,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", onScrollHandler, { passive: true });
   document.addEventListener("scroll", onScrollHandler, { passive: true });
 
-  let currentPage = 0; // 0 = Cakes, 1 = Bakery Items, 2 = Customized Cakes, 3 = Plated Desserts
-  const totalPages = 4;
+  let currentPage = 0; // 0 = Cakes, 1 = Savouries, 2 = Customized Cakes, 3 = Plated Desserts, 4 = Plum Cakes
+  const totalPages = 5;
 
-  const tabs = [tabCakes, tabBakery, tabCustomized, tabDesserts];
-  const dots = [dot0, dot1, dot2, dot3];
+  const tabs = [tabCakes, tabBakery, tabCustomized, tabDesserts, tabPlum];
+  const dots = [dot0, dot1, dot2, dot3, dot4];
 
   function goToPage(pageIndex) {
     if (pageIndex < 0) pageIndex = 0;
@@ -713,11 +754,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabBakery) tabBakery.addEventListener("click", () => goToPage(1));
   if (tabCustomized) tabCustomized.addEventListener("click", () => goToPage(2));
   if (tabDesserts) tabDesserts.addEventListener("click", () => goToPage(3));
+  if (tabPlum) tabPlum.addEventListener("click", () => goToPage(4));
 
   if (dot0) dot0.addEventListener("click", () => goToPage(0));
   if (dot1) dot1.addEventListener("click", () => goToPage(1));
   if (dot2) dot2.addEventListener("click", () => goToPage(2));
   if (dot3) dot3.addEventListener("click", () => goToPage(3));
+  if (dot4) dot4.addEventListener("click", () => goToPage(4));
 
   // -------------------------------------------------------------------------
   // 5. TOUCH SWIPE GESTURES (Mobile phone screen swipe across 3 pages)
@@ -864,6 +907,8 @@ document.addEventListener("DOMContentLoaded", () => {
         goToPage(2);
       } else if (targetCard.closest("#pageDesserts")) {
         goToPage(3);
+      } else if (targetCard.closest("#pagePlum")) {
+        goToPage(4);
       } else {
         goToPage(0);
       }
@@ -873,8 +918,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const ingredients = targetCard.getAttribute("data-ingredients") || "";
       const isBakery = Boolean(targetCard.closest("#pageBakery"));
       const isDessert = Boolean(targetCard.closest("#pageDesserts"));
+      const isPlum = Boolean(targetCard.closest("#pagePlum"));
       setTimeout(() => {
-        openImageViewer(fullSrc, name, price, ingredients, isBakery, isDessert);
+        openImageViewer(fullSrc, name, price, ingredients, isBakery, isDessert, isPlum);
       }, 350);
     }
   }
